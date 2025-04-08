@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      data-default-icon="Logo Icon"
+      data-badged-icon="Logo Icon"
+      rel="shortcut icon"
+      href=".//img/final logo2.png"
+    />
+    <title>Slide Tech</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" href="img/FINAL.png" as="image" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .nav-bar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        position: relative;
+        background-color: black;
+        padding: 12px 20px;
+      }
+
+      .logo img {
+        width: 70px;
+        height: auto;
+      }
+
+      .menu {
+        display: flex;
+      }
+
+      .menu li {
+        padding-left: 30px;
+      }
+
+      .menu li a {
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        transition: 0.15s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
+      }
+
+      .menu li a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: white;
+        transition: 0.15s ease-in-out;
+      }
+
+      .menu li a:hover:after {
+        width: 100%;
+      }
+
+      .open-menu,
+      .close-menu {
+        position: absolute;
+        color: white;
+        cursor: pointer;
+        font-size: 1.5rem;
+        display: none;
+      }
+
+      .open-menu {
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+      }
+
+      .close-menu {
+        top: 20px;
+        right: 20px;
+      }
+
+      #check {
+        display: none;
+      }
+
+      @media (max-width: 1024px) and (max-height: 600px) {
+        .nav-bar {
+          padding: 10px 15px;
+        }
+
+        .logo img {
+          width: 60px;
+        }
+
+        .menu {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          z-index: 100;
+          background-color: black;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .menu li {
+          margin-top: 20px;
+        }
+
+        .menu li a {
+          padding: 8px 12px;
+          font-size: 1rem;
+        }
+
+        .open-menu,
+        .close-menu {
+          display: block;
+          font-size: 1.8rem;
+        }
+
+        #check:checked ~ .menu {
+          right: 0;
+        }
+      }
+
+      @media (max-width: 610px) {
+        .menu {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 80%;
+          height: 100vh;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          z-index: 100;
+          background-color: black;
+          transition: all 0.2s ease-in-out;
+        }
+
+        .menu li {
+          margin-top: 40px;
+        }
+
+        .menu li a {
+          padding: 10px;
+        }
+
+        .open-menu,
+        .close-menu {
+          display: block;
+        }
+
+        #check:checked ~ .menu {
+          right: 0;
+        }
+      }
+
+   .maincontent {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+
+        background-image: url(img/FINAL.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: background-image 0.5s ease-in-out;
+      }
+
+      .content-header h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        color: white;
+      }
+      .button-group .btn {
+        display: inline-block;
+        position: relative;
+        margin: 10px;
+        padding: 8px 20px;
+        color: white;
+        background-color: red;
+        text-decoration: none;
+        border: 2px solid red;
+        border-radius: 1000px;
+        font-size: 0.9rem;
+        overflow: hidden;
+        transition: color 0.3s ease, transform 0.2s ease, border-color 0.3s ease,
+          background-color 0.3s ease;
+      }
+
+      .button-group .btn::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: white;
+        z-index: -1;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease;
+        border-radius: 1000px;
+      }
+
+      .button-group .btn:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      .button-group .btn:hover {
+        color: black;
+        background-color: white;
+        border-color: black;
+        transform: translateY(-2px);
+      }
+
+      .tagline {
+        font-size: 35px;
+        color: red;
+        margin-top: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .button-group .btn {
+          padding: 6px 16px;
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .button-group .btn {
+          padding: 4px 12px;
+          font-size: 0.75rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .content-header h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .content-header h1 {
+          font-size: 2rem;
+        }
+      }
+
+      .cars {
+        background-color: whitesmoke;
+      }
+
+      .cars h1 {
+        font-size: 50px;
+        color: black;
+        text-align: center;
+        padding-top: 50px;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      @media screen and (max-width: 768px) {
+        .cars .desktop {
+          display: none;
+        }
+
+        .dropdown-toggle-label {
+          display: inline-block;
+        }
+
+        .dropdown-checkbox:checked ~ .dropdown-content {
+          display: block;
+        }
+
+        .cars h1 {
+          font-size: 40px;
+          color: black;
+          text-align: center;
+          padding-top: 50px;
+          font-family: "Montserrat", sans-serif;
+        }
+        .image-box img {
+          width: 100%;
+          height: auto;
+          max-width: 330px;
+          border-radius: 5px;
+        }
+      }
+
+      .cars h1 {
+        margin-bottom: 30px;
+        color: black;
+      }
+
+      .image-box {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-left: 20px;
+        margin-bottom: 15px;
+        background-color: #f9f9f9;
+        width: calc(100% - 40px);
+        max-width: 550px;
+        flex-wrap: wrap;
+
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.5s ease forwards;
+      }
+
+      .image-box img {
+        width: auto;
+        height:100%;
+        max-width: 350px;
+        border-radius: 5px;
+      }
+
+      .info {
+        flex: 1;
+      }
+
+      .info p {
+        color: white;
+      }
+
+      .car-title {
+        font-weight: bold;
+        font-size: 22px;
+        color: white;
+      }
+
+      .car-tagline {
+        color: white;
+        margin-top: 10px;
+        font-size: 15px;
+      }
+
+      .car-price {
+        font-size: 15px;
+        margin-top: 10px;
+      }
+      .view-more {
+        background-color: white;
+        color: black;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 1000px;
+        cursor: pointer;
+        margin: 25px 0px;
+        display: inline-flex;
+        align-items: center;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        position: relative;
+      }
+      .view-more a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .arrow {
+        margin-left: 5px;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateX(10px);
+      }
+
+      .view-more:hover {
+        background-color: gray;
+        transform: translateX(-10px);
+      }
+
+      .view-more:hover .arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .group {
+        display: none;
+      }
+
+      @media only screen and (max-width: 800px) {
+        .image-box {
+          flex-direction: column;
+          align-items: center;
+          margin: 5px;
+          padding: 10px;
+        }
+
+        .image-box img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .info {
+          width: 100%;
+          text-align: center;
+          padding: 5px;
+        }
+
+        .car-title {
+          font-size: 1.5rem;
+        }
+
+        .car-tagline {
+          font-size: 1rem;
+          margin-top: 5px;
+        }
+
+        .car-price {
+          font-size: 1.2rem;
+          margin-top: 5px;
+        }
+
+        .view-more {
+          width: 50%;
+          padding: 10px;
+          font-size: 1rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          transition: transform 0.3s ease, background-color 0.3s ease;
+          background-color: white;
+          color: black;
+          border: none;
+          border-radius: 1000px;
+          margin: 15px 0px;
+        }
+
+        .arrow {
+          margin-left: 5px;
+          opacity: 0;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          transform: translateX(10px);
+        }
+
+        .view-more:hover {
+          background-color: gray;
+          transform: translateX(-10px);
+        }
+
+        .view-more:hover .arrow {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @media only screen and (max-width: 467px) {
+        .image-box {
+          flex-direction: column;
+          align-items: center;
+          margin: 5px;
+          padding: 10px;
+        }
+
+        .image-box img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .info {
+          width: 100%;
+          text-align: center;
+          padding: 5px;
+        }
+
+        .car-title {
+          font-size: 1.5rem;
+        }
+
+        .car-tagline {
+          font-size: 1rem;
+          margin-top: 5px;
+        }
+
+        .car-price {
+          font-size: 1.2rem;
+          margin-top: 5px;
+        }
+
+        .view-more {
+          width: 50%;
+          padding: 10px;
+          font-size: 1rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          transition: transform 0.3s ease, background-color 0.3s ease;
+          background-color: white;
+          color: black;
+          border: none;
+          border-radius: 1000px;
+          margin: 15px 0px;
+        }
+
+        .arrow {
+          margin-left: 5px;
+          opacity: 0;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          transform: translateX(10px);
+        }
+
+        .view-more:hover {
+          background-color: gray;
+          transform: translateX(-10px);
+        }
+
+        .view-more:hover .arrow {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #sportscar:checked ~ .gallery .group1,
+      #luxurycar:checked ~ .gallery .group2,
+      #bigbikes:checked ~ .gallery .group3 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 40px 0;
+        font-family: "Montserrat", sans-serif;
+        color: black;
+        font-weight: 600;
+      }
+
+      .tabs label {
+        position: relative;
+        display: block;
+        padding: 5px 15px;
+        cursor: pointer;
+        border: none;
+        text-decoration: none;
+        font-size: 18px;
+        transition: transform 0.2s ease;
+      }
+
+      .tabs label::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: black;
+        transition: width 0.3s ease;
+      }
+
+      .tabs label:hover::after {
+        width: 100%;
+      }
+
+      .tabs label:hover {
+        transform: translateY(-3px);
+      }
+
+      .explore-button-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .explore-button-container {
+        text-align: center;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .explore-all-vehicles {
+        background-color: white;
+        color: black;
+        padding: 7px 20px;
+        border: none;
+        border-radius: 1000px;
+        cursor: pointer;
+        font-size: 1.1em;
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 0 0 2px black;
+        margin: 5px 0;
+      }
+
+      @media (max-width: 768px) {
+        .explore-all-vehicles {
+          padding: 6px 16px;
+          font-size: 1em;
+        }
+
+        .explore-button-container {
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .explore-all-vehicles {
+          padding: 5px 14px;
+          font-size: 0.9em;
+        }
+
+        .explore-button-container {
+          gap: 8px;
+          flex-direction: column;
+        }
+      }
+
+      .explore-text {
+        transition: transform 0.3s ease;
+      }
+
+      .arrow-icon {
+        margin-left: 10px;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .explore-all-vehicles:hover .explore-text {
+        transform: translateX(-10px);
+      }
+
+      .explore-all-vehicles:hover .arrow-icon {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .explore-all-vehicles:active .explore-text {
+        transform: scale(0.95);
+      }
+
+      body {
+        scroll-behavior: scroll;
+      }
+
+   
+    
+      .services-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px 30px;
+        margin: 0 auto;
+      }
+
+      .services-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .services-title h2 {
+        font-size: 45px;
+        color: black;
+        text-align: center;
+        padding: 20px 0;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .service-card {
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        width: calc(25% - 20px);
+        height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .service-card h1 {
+        font-size: 1.2em;
+        margin-top: 0px;
+        margin-bottom: -2px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .service-icon {
+        display: block;
+        margin: 0 auto 0px auto;
+        width: 55px;
+        height: auto;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      .service-card hr {
+        border: none;
+        border-top: 2px solid #ccc;
+        width: 80%;
+        margin: 2px auto;
+      }
+
+      .service-card p {
+        font-size: 1em;
+
+        margin-bottom: 1px;
+        color: #555;
+        position: relative;
+        z-index: 2;
+      }
+
+      .service-card .discover-button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 15px;
+      }
+
+      .discover-all-vehicles {
+        background-color: white;
+        color: black;
+        padding: 7px 20px;
+        border: none;
+        border-radius: 1000px;
+        cursor: pointer;
+        font-size: 1.1em;
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 0 0 2px black;
+        margin: 5px 0;
+      }
+
+      .discover-text {
+        transition: transform 0.3s ease;
+      }
+
+      .arrow-icon {
+        margin-left: 10px;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .discover-all-vehicles:hover .discover-text {
+        transform: translateX(-10px);
+      }
+
+      .discover-all-vehicles:hover .arrow-icon {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .discover-all-vehicles:active .discover-text {
+        transform: scale(0.95);
+      }
+
+      @media (max-width: 1024px) {
+        .service-card {
+          width: calc(45% - 20px);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .services-container {
+          flex-direction: column;
+          gap: 15px;
+        }
+        .service-card {
+          width: 100%;
+          height: 200px;
+          padding: 8px;
+        }
+
+        .discover-button-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          padding: 15px 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .discover-all-vehicles {
+          padding: 5px 14px;
+          font-size: 0.9em;
+        }
+      }
+
+      @media (max-width: 428px) and (min-width: 320px) {
+        .discover-button-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          padding: 15px 0;
+        }
+
+        .discover-all-vehicles {
+          padding: 5px 14px;
+          font-size: 0.95em;
+        }
+      }
+
+      .reviews-section {
+        text-align: center;
+        padding: 40px;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+      }
+
+      .reviews-section h1 {
+        font-size: 2.8em;
+        color: black;
+        margin-bottom: 30px;
+      }
+
+      .reviews-section .intro {
+        font-size: 18px;
+        color: black;
+        margin: 20px 0;
+        text-align: center;
+        line-height: 1.6;
+      }
+
+      .reviews {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin-top: 40px;
+      }
+
+      .review-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 30px;
+        width: 280px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .review-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .review-card h3 {
+        font-size: 1.4em;
+        color: black;
+        margin-bottom: 15px;
+      }
+
+      .review-card p {
+        font-size: 1.1em;
+        color: black;
+        margin-bottom: 15px;
+      }
+
+      .review-card strong {
+        font-weight: bold;
+      }
+
+      .avatar {
+        position: relative;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 6px solid #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @media (max-width: 768px) {
+        .reviews {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .review-card {
+          width: 90%;
+          margin: 0 auto;
+        }
+
+        .avatar {
+          top: -50px;
+          width: 100px;
+          height: 100px;
+        }
+      }
+      .container {
+        margin: 0 auto;
+        padding: 4rem;
+        width: 100%;
+        max-width: 1200px;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .container h2 {
+        text-align: center;
+        font-size: clamp(20px, 4vw, 38px);
+        margin-bottom: 1.5rem;
+      }
+
+      .accordion-item {
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .accordion-toggle {
+        display: none;
+      }
+
+      .accordion-button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 1em 0;
+        color: #1a1a1d;
+        font-size: clamp(0.85rem, 3vw, 1.15rem);
+        font-weight: 400;
+        border: none;
+        background: none;
+        outline: none;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .accordion-button:hover,
+      .accordion-button:focus {
+        color: #000;
+      }
+
+      .accordion-title {
+        flex-grow: 1;
+        padding-right: 1.5em;
+      }
+
+      .icon {
+        display: inline-block;
+        position: relative;
+        width: 22px;
+        height: 22px;
+        transition: transform 0.3s ease;
+      }
+
+      .icon::before,
+      .icon::after {
+        content: "";
+        position: absolute;
+        background: currentColor;
+        transition: transform 0.3s ease;
+      }
+
+      .icon::before {
+        width: 12px;
+        height: 2px;
+        top: 10px;
+        left: 5px;
+        transform-origin: center;
+      }
+
+      .icon::after {
+        width: 2px;
+        height: 12px;
+        top: 5px;
+        left: 10px;
+        transform-origin: center;
+      }
+
+      .accordion-toggle:checked + .accordion-button .icon::before {
+        transform: rotate(90deg);
+      }
+
+      .accordion-toggle:checked + .accordion-button .icon::after {
+        transform: rotate(90deg);
+      }
+
+      .accordion-toggle:checked + .accordion-button + .accordion-content {
+        opacity: 1;
+        max-height: 20em;
+        transition: all 0.3s ease;
+        display: block;
+      }
+
+      .accordion-content {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        padding: 0 1em;
+        display: none;
+      }
+
+      .accordion-content p {
+        font-size: clamp(0.85rem, 3vw, 1rem);
+        line-height: 1.6;
+        margin: 1em 0;
+      }
+
+      @media screen and (max-width: 768px) {
+        .container {
+          padding: 1.5rem;
+        }
+
+        .accordion-button {
+          font-size: clamp(0.8rem, 4vw, 1rem);
+          padding: 0.8em 0;
+        }
+
+        .icon {
+          width: 20px;
+          height: 20px;
+        }
+
+        .icon::before {
+          width: 10px;
+          top: 9px;
+          left: 5px;
+        }
+
+        .icon::after {
+          width: 2px;
+          height: 10px;
+          top: 5px;
+          left: 9px;
+        }
+      }
+
+      @media screen and (min-width: 611px) and (max-width: 650px) {
+        .container {
+          padding: 0.9rem;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+
+        .accordion {
+          width: 100%;
+        }
+
+        .accordion-button {
+          font-size: 0.75rem;
+          padding: 0.6em 0.75em;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transition: all 0.3s ease;
+        }
+
+        .accordion-title {
+          padding-right: 1em;
+          flex-grow: 1;
+          font-weight: 500;
+        }
+
+        .icon {
+          width: 18px;
+          height: 18px;
+          position: relative;
+          transform: rotate(0);
+          transition: transform 0.3s ease;
+        }
+
+        .icon::before,
+        .icon::after {
+          content: "";
+          position: absolute;
+          background-color: currentColor;
+          border-radius: 2px;
+          transition: transform 0.3s ease;
+        }
+
+        .icon::before {
+          width: 9px;
+          height: 2px;
+          top: 8px;
+          left: 4px;
+          transform-origin: left center;
+        }
+
+        .icon::after {
+          width: 2px;
+          height: 9px;
+          top: 4px;
+          left: 8px;
+          transform-origin: top center;
+        }
+
+        .accordion-content {
+          padding: 0 0.75em;
+          overflow: hidden;
+          max-height: 0;
+          opacity: 0;
+          transition: max-height 0.3s ease, opacity 0.3s ease;
+        }
+
+        .accordion-content.active {
+          max-height: 500px;
+          opacity: 1;
+        }
+
+        .accordion-content p {
+          font-size: 0.75rem;
+          margin: 0.75em 0;
+          line-height: 1.4;
+          color: #333;
+        }
+
+        .accordion-button:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .accordion-button:focus {
+          outline: 2px solid rgba(0, 123, 255, 0.25);
+          outline-offset: -2px;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .accordion-button {
+          font-size: clamp(0.7rem, 3.5vw, 0.85rem);
+        }
+
+        .icon {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+
+
+
+      .footer{
+background:#000;
+padding:30px 0px 10px 0px;
+
+text-align:center;
+}
+
+.footer .footer-icon {
+    margin-bottom: 20px; 
+}
+
+.footer .footer-icon img {
+    width: 70px; 
+    height: auto;
+    margin: 0 auto; 
+}
+
+
+.footer .row{
+width:100%;
+margin:1% 0%;
+padding:0.6% 0%;
+color:white;
+font-size:0.9em;
+}
+
+
+
+.footer .row a{
+text-decoration:none;
+color:white;
+transition:0.5s;
+}
+
+
+
+.row ul li {
+    display: flex;
+    align-items: center; 
+    margin: 12px 0;
+}
+
+.row ul li img {
+    width: 25px; 
+    height: 25px;
+    margin-right: 10px; 
+    vertical-align: middle; 
+}
+
+
+.footer .row a:hover{
+color:red;
+}
+
+.footer .row ul{
+width:100%;
+}
+
+.footer .row ul li{
+display:inline-block;
+margin:0px 30px;
+}
+
+.footer .row a i{
+font-size:2em;
+margin:0% 1%;
+}
+
+
+
+
+.footer .facebook-icon img {
+    height: auto;
+    width: 50px;
+    padding: 5px;
+    border-radius: 50%; 
+    transition: 0.3s; 
+    
+}
+
+
+
+
+.footer .instagram-icon img {
+  height: auto;
+  width: 56px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+
+
+
+
+
+.footer .twitter-icon img {
+  height: auto;
+  width: 70px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+
+
+@media (max-width: 480px) {
+   
+    .footer .facebook-icon img {
+        width: 40px; 
+        padding: 4px;
+        margin-left: -13px;
+       
+    }
+
+    
+    .footer .instagram-icon img {
+        width: 45px;
+        padding: 4px; 
+        margin-left: -13px;
+    }
+
+ 
+    .footer .twitter-icon img {
+        width: 50px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+}
+
+
+@media (max-width: 720px) {
+    
+    .footer .facebook-icon img {
+        width: 40px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+
+    .footer .instagram-icon img {
+        width: 45px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+
+
+    .footer .twitter-icon img {
+        width: 50px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+}
+
+@media (min-width: 721px) {
+  .footer {
+    text-align: center;
+    padding: 2%;
+  }
+
+  .footer .row ul li {
+    display: inline-block;
+    margin: 10px 15px  ;
+    text-align: center;
+  }
+
+  .footer .row a i {
+    margin: 0 5%;
+  }
+}
+
+
+@media (max-width:720px){
+.footer{
+text-align:left;
+padding:5%;
+}
+.footer .row ul li{
+display:block;
+margin:10px 0px;
+text-align:left;
+}
+.footer .row a i{
+margin:0% 3%;
+}
+}
+
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav-bar">
+          <li class="logo">
+            <a href="index.html.html"><img src="img/final logo2.png" /></a>
+          </li>
+
+          <input type="checkbox" id="check" />
+          <span class="menu">
+            <li><a href="index.html.html">Home</a></li>
+            <li><a href="allcarsinventory.html">VEHICLES </a></li>
+            <li><a href="allservices.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contactservices.html">Contact</a></li>
+            <li><a href="faqs.html">FAQS</a></li>
+            <label for="check" class="close-menu"
+              ><i class="fas fa-times"></i
+            ></label>
+          </span>
+          <label for="check" class="open-menu"
+            ><i class="fas fa-bars"></i
+          ></label>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="maincontent">
+      <div class="content-header">
+        <h1>Welcome to Slide Tech</h1>
+        <p class="tagline">Precision in Every Turn</p>
+        <div class="button-group">
+          <a href="#vehicle" class="btn">Explore All Vehicles</a>
+          <a href="#serbisyo" class="btn">Services</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cars" id="vehicle">
+      <h1>Top Selling Vehicles</h1>
+
+      <input type="radio" name="vehicle-group" id="sportscar" checked />
+      <input type="radio" name="vehicle-group" id="luxurycar" />
+      <input type="radio" name="vehicle-group" id="bigbikes" />
+
+      <div class="tabs">
+        <label for="sportscar">Sports car</label>
+        <label for="luxurycar">Luxury car</label>
+        <label for="bigbikes">Big bikes</label>
+      </div>
+
+      <div class="gallery">
+        <div class="group group1">
+          <div class="image-box" style="background-color: #b7790b">
+            <img
+              src="sale vehicle/sports cars sale/1.png"
+              alt="Car Image 1"
+            />
+            <div class="info">
+              <p class="car-title">Slidetech Charger GT</p>
+              <p class="car-tagline">Engine: 5.0L naturally aspirated V8</p>
+              <p class="car-price"><s>PHP 2,800,000</s></p>
+              <p class="car-price"> PHP 1,960,000</p>
+              
+              <button class="view-more">
+                <a href="sportscarspecs/sportscar1.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+          <div class="image-box" style="background-color: #0f6a80">
+            <img src="sale vehicle/sports cars sale/2.png" alt="Car Image 2" />
+            <div class="info">
+              <p class="car-title">Slidetech Velocity M</p>
+              <p class="car-tagline">
+                Engine: 3.0-liter inline 6-cylinder twin-turbo
+              </p>
+              <p class="car-price"><s>PHP 3,000,000</s></p>
+              <p class="car-price">PHP 2,100,000</p>
+              <button class="view-more">
+                <a href="sportscarspecs/sc2.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+          <div class="image-box" style="background-color: #133857">
+            <img src="sale vehicle/sports cars sale/3.png" alt="Car Image 3" />
+            <div class="info">
+              <p class="car-title">Slidetech Apex V12</p>
+              <p class="car-tagline">Engine: 8.0L quad-turbocharged W16</p>
+              <p class="car-price"><s>PHP 150,000,000</s></p>
+              <p class="car-price">PHP 105,000,000</p>
+              <button class="view-more">
+                <a href="sportscarspecs/sc3.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+          <div class="image-box" style="background-color: #d29922">
+            <img
+              src="sale vehicle/sports cars sale/4.png"
+              alt="Car Image 4"
+            />
+            <div class="info">
+              <p class="car-title">Slidetech Rossa 458</p>
+              <p class="car-tagline">Engine: 4.5L naturally aspirated V8</p>
+              <p class="car-price"><s>PHP 12,000,000</s></p>
+              <p class="car-price">PHP 8,400,000</p>
+              <button class="view-more">
+                <a href="sportscarspecs/sc4.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+          <div class="image-box" style="background-color: #4c5257">
+            <img
+              src="sale vehicle/sports cars sale/5.png"
+              alt="Car Image 5"
+            />
+            <div class="info">
+              <p class="car-title">Slidetech Feroza S</p>
+              <p class="car-tagline">Engine: 5.0L V8 supercharged</p>
+              <p class="car-price"><s>PHP 6,500,000</s></p>
+              <p class="car-price">PHP 4,550,000</p>
+              <button class="view-more">
+                <a href="sportscarspecs/sc5.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group group2">
+          <div class="image-box" style="background-color: #6e6558">
+            <img src="sale vehicle/laxury sale/1.png" alt="Car Image 6" />
+            <div class="info">
+              <p class="car-title">SlideTech Zenith A200</p>
+              <p class="car-tagline">Engine: 1.3-liter inline-4 turbocharged</p>
+              <p class="car-price"><s>PHP 4.500.000</s></p>
+              <p class="car-price">PHP 3,150,000</p>
+              <button class="view-more">
+                <a href="sportscarspecs/sc9.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+          <div class="image-box" style="background-color: #b62324">
+            <img src="sale vehicle/laxury sale/2.png" alt="Car Image 7" />
+            <div class="info">
+              <p class="car-title">SlideTech TurboX</p>
+              <p class="car-tagline">
+                Engine: 2.7L Flat-6 (Base) / 3.4L Flat-6 (TurboX)
+              </p>
+              <p class="car-price"><s>PHP 2.390.000</s></p>
+              <p class="car-price">PHP 1,673,000</p>
+              <button class="view-more">
+                <a href="sportscarspecs/sc10.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+          <div class="image-box" style="background-color: #89979b">
+            <img src="sale vehicle/laxury sale/3.png" alt="Car Image 8" />
+            <div class="info">
+              <p class="car-title">SlideTech Nova CLA</p>
+              <p class="car-tagline">Engine: 2.0-liter Inline-4 Turbocharged</p>
+              <p class="car-price"><s>PHP 15,000,000</s></p>
+              <p class="car-price">PHP 10,500,000 </p>
+              <button class="view-more">
+                <a href="sportscarspecs/nova.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+          
+          <div class="image-box" style="background-color: #5d6c74">
+            <img src="sale vehicle/laxury sale/4.png" alt="Car Image 9" />
+            <div class="info">
+              <p class="car-title">SlideTech Ironclad GT</p>
+              <p class="car-tagline">Engine: 4.0L V8 Twin-Turbo</p>
+              <p class="car-price"><s>PHP 8,000,000</s></p>
+              <p class="car-price">PHP 5,600,000</p>
+              <button class="view-more">
+                <a href="sportscarspecs/sc11.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+
+          <div class="image-box" style="background-color: #414141">
+            <img src="sale vehicle/laxury sale/5.png" alt="Car Image 10" />
+            <div class="info">
+              <p class="car-title">SlideTech Luxor S 63</p>
+              <p class="car-tagline">Engine: 4.0L V8 Twin-Turbo</p>
+              <p class="car-price"><s>PHP 4.500.000</s></p>
+              <p class="car-price">PHP 3,150,000</p>
+              <button class="view-more">
+                <a href="sportscarspecs/sc12.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group group3">
+          <div class="image-box" style="background-color: #ba0202">
+            <img src="sale vehicle/bigbike sale/1.png" alt="Motor Image 1" />
+            <div class="info">
+              <p class="car-title">Rosso Veloce</p>
+              <p class="car-tagline">Engine: 1,103 cc V4, liquid-cooled</p>
+              <p class="car-price"><s>PHP 1,365,000 </s></p>
+              <p class="car-price">PHP 955,500
+              </p>
+              <button class="view-more">
+                <a href="bigbikespecs/bb1.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+
+
+          <div class="image-box" style="background-color: #3d4f58">
+            <img src="sale vehicle/bigbike sale/2.png" alt="Motor Image 2" />
+            <div class="info">
+              <p class="car-title">Apex Raider 1000R</p>
+              <p class="car-tagline">
+                Engine: 296 cc parallel-twin, liquid-cooled
+              </p>
+              <p class="car-price"><s>PHP 1,699,000.00</s></p>
+              <p class="car-price">PHP 1,189,300</p>
+              <button class="view-more">
+                <a href="bigbikespecs/bb2.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+
+
+
+          <div class="image-box" style="background-color: #1e8f9a">
+            <img src="sale vehicle/bigbike sale/3.png" alt="Motor Image 3" />
+            <div class="info">
+              <p class="car-title">Slidetech Blaze 300</p>
+              <p class="car-tagline">
+                Engine: 999 cc inline-four, liquid-cooled
+              </p>
+              <p class="car-price"><s>PHP 265,000</s></p>
+              <p class="car-price">PHP 185,500</p>
+              <button class="view-more">
+                <a href="bigbikespecs/bb3.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+
+          <div class="image-box" style="background-color: #f39200">
+            <img src="sale vehicle/bigbike sale/4.png" alt="Motor Image 4" />
+            <div class="info">
+              <p class="car-title">Slidetech R1 Reaper</p>
+              <p class="car-tagline">
+                Engine: 998 cc inline-four, liquid-cooled,
+                 DOHC
+              </p>
+              <p class="car-price"><s>PHP 1,099,000</s></p>
+              <p class="car-price">PHP 769,300</p>
+              <button class="view-more">
+                <a href="bigbikespecs/bb4.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+          <div class="image-box" style="background-color: #14b145">
+            <img src="sale vehicle/bigbike sale/5.png" alt="Motor Image 5" />
+            <div class="info">
+              <p class="car-title">Slidetech Nitro ZR</p>
+              <p class="car-tagline">
+                Engine: 998 cc inline-four, liquid-cooled, supercharged
+              </p>
+              <p class="car-price"><s>PHP 1,120,000</s></p>
+              <p class="car-price">PHP 784,000</p>
+              <button class="view-more">
+                <a href="bigbikespecs/bb5.html"
+                  >View More <span class="arrow">➔</span></a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explore-button-container">
+        <a href="carinventory.html">
+          <button class="explore-all-vehicles">
+            <span class="explore-text">Explore All Sports Car</span>
+            <span class="arrow-icon">➔</span>
+          </button>
+        </a>
+
+        <a href="luxinventory.html">
+          <button class="explore-all-vehicles">
+            <span class="explore-text">Explore All Luxury Car</span>
+            <span class="arrow-icon">➔</span>
+          </button>
+        </a>
+
+        <a href="bigbikeinventory.html">
+          <button class="explore-all-vehicles">
+            <span class="explore-text">Explore All BigBikes</span>
+            <span class="arrow-icon">➔</span>
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <div class="services-container" id="serbisyo">
+      <div class="services-title">
+        <h2>Our Services</h2>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src=".//img/battery-removebg-preview.png"
+          alt="Battery"
+        />
+        <h1>Batteries</h1>
+        <hr />
+        <p>Reliable battery services to keep your vehicle running smoothly</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/oil-removebg-preview.png"
+          alt="oil"
+        />
+        <h1>Oil Change</h1>
+        <hr />
+        <p>Premium oil changes for engine longevity and peak performance</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/schedule-removebg-preview.png"
+          alt="Scheduled maintenance"
+        />
+        <h1>Scheduled Maintenance</h1>
+        <hr />
+        <p>Regular check-ups to ensure your vehicle is always road ready</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/tuning-removebg-preview.png"
+          alt="Tune up and engine services"
+        />
+        <h1>Tune-up & Engine Services</h1>
+        <hr />
+        <p>
+          Enhance your vehicle's performance with expert Tune-ups and Engine
+          Services
+        </p>
+      </div>
+
+      <div class="discover-button-container">
+        <a href="allservices.html">
+          <button class="discover-all-vehicles">
+            <span class="discover-text">View more services</span>
+            <span class="arrow-icon">➔</span>
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <div class="reviews-section">
+      <h1>Customer Reviews</h1>
+      <p class="intro">
+        At SlideeTech, we prioritize our customers' needs above all else. <br />
+        But don’t just take our word for it—read the reviews from our satisfied
+        clients!
+      </p>
+
+      <div class="reviews">
+        <div class="review-card">
+          <div class="avatar">
+            <img src=".//img/viewer1" alt="viewer1" />
+          </div>
+          <h3>John Doe</h3>
+          <p>
+            "An outstanding experience! The team was helpful and the service was
+            top-notch."
+          </p>
+          <p><strong>Rating:</strong> ★★★★☆</p>
+        </div>
+
+        <div class="review-card">
+          <div class="avatar">
+            <img src=".//img/viewer3.jpg" alt="viewer2" />
+          </div>
+          <h3>Jane Smith</h3>
+          <p>
+            "Exceptional quality and care. I’ll definitely be returning for
+            future services!"
+          </p>
+          <p><strong>Rating:</strong> ★★★★★</p>
+        </div>
+
+        <div class="review-card">
+          <div class="avatar">
+            <img src=".//img/viewer2.jpg" alt="viewer3" />
+          </div>
+          <h3>Michael Lee</h3>
+          <p>
+            "Great customer service! The staff made the process seamless and
+            easy."
+          </p>
+          <p><strong>Rating:</strong> ★★★☆☆</p>
+        </div>
+      </div>
+    </div>
+
+    <!---->
+    <div class="faqs">
+      <div class="container">
+        <h2>SLIDE TECH FAQs</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <input
+              type="checkbox"
+              id="accordion-checkbox-1"
+              class="accordion-toggle"
+            />
+            <label for="accordion-checkbox-1" class="accordion-button">
+              <span class="accordion-title"
+                >How can I enhance my vehicle’s performance?</span
+              >
+              <span class="icon"></span>
+            </label>
+            <div class="accordion-content">
+              <p>Regular maintenance, fuel upgrades, and performance parts.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <input
+              type="checkbox"
+              id="accordion-checkbox-2"
+              class="accordion-toggle"
+            />
+            <label for="accordion-checkbox-2" class="accordion-button">
+              <span class="accordion-title"
+                >How do I choose a motorcycle or car?</span
+              >
+              <span class="icon"></span>
+            </label>
+            <div class="accordion-content">
+              <p>Consider your budget, needs, and test drive before buying.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <input
+              type="checkbox"
+              id="accordion-checkbox-3"
+              class="accordion-toggle"
+            />
+            <label for="accordion-checkbox-3" class="accordion-button">
+              <span class="accordion-title"
+                >How do I choose the right vehicle??</span
+              >
+              <span class="icon"></span>
+            </label>
+            <div class="accordion-content">
+              <p>Think about your budget, daily needs, and preferences.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <input
+              type="checkbox"
+              id="accordion-checkbox-4"
+              class="accordion-toggle"
+            />
+            <label for="accordion-checkbox-4" class="accordion-button">
+              <span class="accordion-title"
+                >What’s the purpose of routine maintenance?</span
+              >
+              <span class="icon"></span>
+            </label>
+            <div class="accordion-content">
+              <p>
+                Routine maintenance prevents breakdowns, extends vehicle life,
+                and ensures safety and efficiency.
+              </p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <input
+              type="checkbox"
+              id="accordion-checkbox-5"
+              class="accordion-toggle"
+            />
+            <label for="accordion-checkbox-5" class="accordion-button">
+              <span class="accordion-title"
+                >How often should I maintain my vehicle?</span
+              >
+              <span class="icon"></span>
+            </label>
+            <div class="accordion-content">
+              <p>
+                Follow the manufacturer’s service schedule, usually every few
+                thousand miles
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer">
+       
+        <div class="footer-icon">
+          <img src="img/final logo2.png" alt="Footer Icon" />
+      </div>
+      
+      <div class="row">
+      <ul>
+      <li><a href="index.html.html">HOME</a></li>
+      <li><a href="allcarsinventory.html">VEHICLES</a></li>
+      <li><a href="allservices.html">SERVICES</a></li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="contactservices.html">CONTACT</a></li>
+      <li><a href="faqs.html">FAQS</a></li>
+      </ul>
+      </div>
+      
+
+
+      <div class="row">
+        <ul>
+            <li>
+               
+                    <img src="img/email-outline-removebg-preview.png" alt="Email Icon"> slidetech@gmail.com
+               
+            </li>
+            <li>
+              
+                    <img src="img/ooooooooooooooooooooooooooooooooooo-removebg-preview.png" alt="Clock Icon"> Mon-Fri, 9:00 AM - 6:00 PM
+             
+            </li>
+            <li>
+              
+                    <img src="img/telephone-removebg-preview.png" alt="Phone Icon"> 0912-587-0734
+             
+            </li>
+            <li>
+              
+                    <img src="img/navigation-removebg-preview.png" alt="Location Icon">  Karuhatan Daliva st. Valenzuela City
+              
+            </li>
+        </ul>
+    </div>
+    
+
+
+    <div class="row">
+      <ul>
+          <li>
+              <a href="https://www.facebook.com/people/Slide-Tech/100092159427541/?mibextid=ZbWKwL" class="facebook-icon"><img src="img/social.png" alt="Fscebook"></a>
+          </li>
+          <li>
+              <a href="https://www.instagram.com/slidetech40?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram-icon"><img src="img/inds.png" alt="Instagram"></a>
+          </li>
+      
+          <li>
+              <a href="https://x.com/SlideTech11" class="twitter-icon"><img src="img/twitter (3).png" alt="Twitter"></a>
+          </li>
+      </ul>
+  </div>
+  
+      
+      <div class="row">
+     Copyright © 2024 SlideTech - All rights reserved
+      </div>
+      </div>
+      </footer>
+  
+    </div>
+  </body>
+</html>

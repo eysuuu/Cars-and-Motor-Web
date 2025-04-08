@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      .nav-bar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        position: relative;
+        background-color: black;
+        padding: 12px 20px;
+      }
+      .logo img {
+        width: 70px;
+
+        height: auto;
+      }
+      .menu {
+        display: flex;
+      }
+      .menu li {
+        padding-left: 30px;
+      }
+      .menu li a {
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        transition: 0.15s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
+      }
+      .menu li a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: white;
+        transition: 0.15s ease-in-out;
+      }
+      .menu li a:hover:after {
+        width: 100%;
+      }
+      .open-menu,
+      .close-menu {
+        position: absolute;
+        color: white;
+        cursor: pointer;
+        font-size: 1.5rem;
+        display: none;
+      }
+      .open-menu {
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+      }
+      .close-menu {
+        top: 20px;
+        right: 20px;
+      }
+      #check {
+        display: none;
+      }
+      @media (max-width: 610px) {
+        .menu {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 80%;
+          height: 100vh;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          z-index: 100;
+          background-color: black;
+          transition: all 0.2s ease-in-out;
+        }
+        .menu li {
+          margin-top: 40px;
+        }
+        .menu li a {
+          padding: 10px;
+        }
+        .open-menu,
+        .close-menu {
+          display: block;
+        }
+        #check:checked ~ .menu {
+          right: 0;
+        }
+      }
+
+      .team-row {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-wrap: wrap;
+  padding: 40px 0;
+  max-width: 1200px;
+  margin: 0 auto; 
+}
+
+      .member {
+        flex: 1 1 250px;
+        margin: 20px;
+        text-align: center;
+        padding: 20px 10px;
+
+        max-width: 300px;
+       
+      
+      }
+
+     
+
+      .member img {
+        display: block;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+
+        border-radius: 50%;
+        margin: 0 auto;
+      }
+
+      .member h2 {
+        font-size: 24px;
+        color: black;
+        margin: 15px 0;
+        font-weight: 200;
+      }
+
+      .member p {
+        font-size: 15px;
+        color: black;
+        line-height: 1.6;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        gap: 25px;
+      }
+      .social-icons img {
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 0;
+      }
+
+    
+  .footer{
+background:#000;
+padding:30px 0px 10px 0px;
+
+text-align:center;
+}
+
+.footer .footer-icon {
+    margin-bottom: 20px; 
+}
+
+.footer .footer-icon img {
+    width: 70px; 
+    height: auto;
+    margin: 0 auto; 
+}
+
+
+.footer .row{
+width:100%;
+margin:1% 0%;
+padding:0.6% 0%;
+color:white;
+font-size:0.9em;
+}
+
+
+
+.footer .row a{
+text-decoration:none;
+color:white;
+transition:0.5s;
+}
+
+
+
+.row ul li {
+    display: flex;
+    align-items: center; 
+    margin: 12px 0;
+}
+
+.row ul li img {
+    width: 25px; 
+    height: 25px;
+    margin-right: 10px; 
+    vertical-align: middle; 
+}
+
+
+.footer .row a:hover{
+color:red;
+}
+
+.footer .row ul{
+width:100%;
+}
+
+.footer .row ul li{
+display:inline-block;
+margin:0px 30px;
+}
+
+.footer .row a i{
+font-size:2em;
+margin:0% 1%;
+}
+
+
+
+
+.footer .facebook-icon img {
+    height: auto;
+    width: 50px;
+    padding: 5px;
+    border-radius: 50%; 
+    transition: 0.3s; 
+    
+}
+
+
+
+
+.footer .instagram-icon img {
+  height: auto;
+  width: 56px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+
+
+
+
+
+.footer .twitter-icon img {
+  height: auto;
+  width: 70px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+
+
+@media (max-width: 480px) {
+   
+    .footer .facebook-icon img {
+        width: 40px; 
+        padding: 4px;
+        margin-left: -13px;
+       
+    }
+
+    
+    .footer .instagram-icon img {
+        width: 45px;
+        padding: 4px; 
+        margin-left: -13px;
+    }
+
+ 
+    .footer .twitter-icon img {
+        width: 50px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+}
+
+
+@media (max-width: 720px) {
+    
+    .footer .facebook-icon img {
+        width: 40px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+
+    .footer .instagram-icon img {
+        width: 45px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+
+
+    .footer .twitter-icon img {
+        width: 50px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+}
+
+@media (min-width: 721px) {
+  .footer {
+    text-align: center;
+    padding: 2%;
+  }
+
+  .footer .row ul li {
+    display: inline-block;
+    margin: 10px 15px  ;
+    text-align: center;
+  }
+
+  .footer .row a i {
+    margin: 0 5%;
+  }
+}
+
+
+@media (max-width:720px){
+.footer{
+text-align:left;
+padding:5%;
+}
+.footer .row ul li{
+display:block;
+margin:10px 0px;
+text-align:left;
+}
+.footer .row a i{
+margin:0% 3%;
+}
+}
+
+      .contact-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 100px;
+        background-color: black;
+        padding: 20px;
+        flex-wrap: wrap;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        text-align: center;
+      }
+
+      .contact-row h1 {
+        margin: 0;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .contact-row .icon-img {
+        width: 25px;
+        height: auto;
+        margin-right: 15px;
+      }
+
+      .contact-row p {
+        margin: 0px 0px 0px 40px;
+        font-size: 19px;
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
+        .contact-info {
+          flex-direction: column;
+          gap: 40px;
+          padding: 15px;
+        }
+
+        .contact-row {
+          gap: 10px;
+          margin-bottom: 20px;
+        }
+
+        .contact-row p {
+          margin-left: 0;
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .contact-info {
+          gap: 20px;
+          padding: 10px;
+        }
+
+        .contact-row h1 {
+          font-size: 18px;
+        }
+
+        .contact-row p {
+          font-size: 14px;
+        }
+
+        .contact-row .icon-img {
+          width: 20px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .contact-info {
+          gap: 100px;
+          padding: 20px;
+        }
+
+        .contact-row p {
+          font-size: 19px;
+        }
+      }
+
+
+      
+.mission-vision-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.history {
+  width: 100%;
+  height: 300px;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;  
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-icon {
+  width: 79px;
+  height: auto;
+  margin-bottom: 10px; 
+}
+
+.history-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px; 
+  color: black;
+}
+
+.history-content {
+  text-align: justify;
+  font-size: 16px;
+  line-height: 2;
+  color: black;
+  letter-spacing: 1px;
+  padding: 0 20px;
+}
+
+.mission-vision-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.mission-text, .vision-text {
+  flex: 1;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.mission-header, .vision-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mission-icon, .vision-icon {
+  width: 80px; 
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.mission-title h1, .vision-title h1 {
+  font-size: 24px;
+  color: black;
+  text-transform: uppercase;
+}
+
+.mission-columns, .vision-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mission-columns p, .vision-columns p {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.5;
+  color: black;
+  letter-spacing: 1px;
+  text-align: justify;
+  margin: 0 10px;
+}
+
+.mission-vision-container {
+  flex-wrap: wrap;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .mission-vision-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mission-text, .vision-text {
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .mission-columns, .vision-columns {
+    flex-direction: column;
+  }
+
+  .mission-columns p, .vision-columns p {
+    margin-bottom: 10px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .mission-vision-container {
+    padding: 10px;
+  }
+
+  .history {
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .history-title {
+    font-size: 20px;
+  }
+
+  .history-content {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .mission-text, .vision-text {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  .mission-title h1, .vision-title h1 {
+    font-size: 20px;
+  }
+
+  .mission-columns p, .vision-columns p {
+    font-size: 14px;
+  }
+
+  .history-icon {
+    width: 60px;
+  }
+
+  .mission-icon, .vision-icon {
+    width: 60px;
+  }
+}
+
+
+    </style>
+     <link data-default-icon="Logo Icon" data-badged-icon="Logo Icon" rel="shortcut icon" href=".//img/Document_files/LOGO ICON">
+    <title>About</title>
+  </head>
+
+  <body>
+
+    <header>
+      <nav>
+        <ul class="nav-bar">
+          <li class="logo">
+            <a href="index.html.html"><img src="img/final logo2.png" /></a>
+          </li>
+
+          <input type="checkbox" id="check" />
+          <span class="menu">
+            <li><a href="index.html.html">Home</a></li>
+            <li><a href="allcarsinventory.html">VEHICLES
+            </a></li>
+            <li><a href="allservices.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contactservices.html">Contact</a></li>
+            <li><a href="faqs.html">FAQS</a></li>
+            <label for="check" class="close-menu"
+              ><i class="fas fa-times"></i
+            ></label>
+          </span>
+          <label for="check" class="open-menu"
+            ><i class="fas fa-bars"></i
+          ></label>
+        </ul>
+      </nav>
+    </header>
+
+
+
+    <div class="mission-vision-container">
+  
+      <div class="history">
+        <div class="history-header">
+          <img src="img/analysis.png" alt="History Icon" class="history-icon">
+        </div>
+        <h1 class="history-title">OUR HISTORY</h1> 
+        <div class="history-content">
+          <p>
+            Slide Tech, founded in 1977 by race driver Andres Ramos, began by selling premium vehicle parts from Germany and Japan. In 1989, the company introduced the Aurelio, a car that highlighted Philippine automotive innovation. Over the years, Slide Tech expanded its offerings, including a 400cc motorcycle, gaining a reputation for quality and innovation. In 2023, new business partners joined to support continued growth. Today, Slide Tech remains committed to delivering high-tech, reliable, and high-quality products while upholding its founder’s values.
+          </p>
+        </div>
+      </div>
+    
+      <div class="mission-vision-flex">
+        
+       
+        <div class="mission-text">
+          <div class="mission-header">
+            <img src="img/targeted-advertising.png" alt="Mission Icon" class="mission-icon">
+            <div class="mission-title">
+              <h1>OUR MISSION</h1>
+            </div>
+          </div>
+          <div class="mission-columns">
+            <p>
+              To be one of the most reliable and sustainable car and motor companies in the world, providing the highest quality production and safe performance for customer satisfaction, Slide Tech strives to enhance and sustain a world-class experience through its environmental innovations.
+            </p>
+          </div>
+        </div>
+    
+        
+        <div class="vision-text">
+          <div class="vision-header">
+            <img src="img/online-marketing.png" alt="Vision Icon" class="vision-icon">
+            <div class="vision-title">
+              <h1>OUR VISION</h1>
+            </div>
+          </div>
+          <div class="vision-columns">
+            <p>
+              Slide Tech aims to be a global transportation company that evolves with new technology and delivers high-quality innovations for the future, making transportation more accessible and efficient for people around the world.
+            </p>
+          </div>
+        </div>
+      
+      </div>
+    
+    </div>
+    
+    
+
+
+
+
+
+
+
+    <section>
+      <h1 style="text-align: center; font-size: 45px">Our Team</h1>
+      <p style="text-align: center; margin-top: 20px; font-size: 18px">
+        our team delivers high-performance sports cars, luxury vehicles, and big
+        bikes with a focus on power, innovation, and style.
+      </p>
+
+
+      <div class="team-row">
+
+
+
+
+              <!-- Member 2 -->
+              <div class="member">
+                <img src="img/stef.jpg" alt="" />
+                <h2>Stef Shane</h2>
+                <p class="role">Ceo</p>
+                <hr />
+                <div class="social-icons">
+                  <a href="https://www.facebook.com/stefshane.07" target="_blank"
+                    ><img src="img/fbicon.png" alt="Facebook" width="30"
+                  /></a>
+                  <a href="https://www.instagram.com/_xyvhh?igsh=MWJ6ZDdxajJ5NzVzZg==" target="_blank"
+                    ><img src="img/instaicon.png" alt="Twitter" width="30"
+                  /></a>
+      
+                </div>
+              </div>
+
+
+
+    <!-- Member 4 -->
+    <div class="member">
+      <img src="img/justine.jpg" alt="" />
+      <h2>Justine Angel</h2>
+      <p class="role">Manager</p>
+      <hr />
+      <div class="social-icons">
+        <a href="https://www.facebook.com/naofumi.iwantani.7" target="_blank"
+          ><img src="img/fbicon.png" alt="Facebook" width="30"
+        /></a>
+        <a href="https://www.instagram.com/jyst_yn?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"
+          ><img src="img/instaicon.png" alt="Twitter" width="30"
+        /></a>
+       
+      </div>
+    </div>
+
+
+     <!-- Member 3 -->
+     <div class="member">
+      <img src="img/joel.jpg" alt="" />
+      <h2>Joel Aquino</h2>
+      <p class="role">Product manager</p>
+      <hr />
+      <div class="social-icons">
+        <a href="https://www.facebook.com/joel.aquino.63792" target="_blank"
+          ><img src="img/fbicon.png" alt="Facebook" width="30"
+        /></a>
+        <a href="https://www.instagram.com/iim_joel?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"
+          ><img src="img/instaicon.png" alt="Twitter" width="30"
+        /></a>
+        <a href="https://x.com/JoelAquino91788" target="_blank"
+          ><img src="img/twitter icon.png" alt="LinkedIn" width="30"
+        /></a>
+      </div>
+    </div>
+
+
+
+    <!-- Member 6 -->
+    <div class="member">
+      <img src="img/seno.jpg" alt="" />
+      <h2>Justine Señoron</h2>
+      <p class="role">Marketing</p>
+      <hr />
+      <div class="social-icons">
+        <a href="https://www.facebook.com/justine.trajano.50?mibextid=ZbWKwL" target="_blank"
+          ><img src="img/fbicon.png" alt="Facebook" width="30"
+        /></a>
+        <a href="https://www.instagram.com/senonyahahaha?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"
+          ><img src="img/instaicon.png" alt="Twitter" width="30"
+        /></a>
+    
+      </div>
+    </div>
+
+        <!-- Member 1 -->
+        <div class="member">
+          <img src="img/ace.jpg" alt="" />
+          <h2>Ace Flores</h2>
+          <p class="role">Developer</p>
+          <hr />
+          <div class="social-icons">
+            <a href="https://www.facebook.com/ace.flores.560" target="_blank"
+              ><img src="img/fbicon.png" alt="Facebook" width="30"
+            /></a>
+            <a href="https://www.instagram.com/eyss_floress/" target="_blank"
+              ><img src="img/instaicon.png" alt="Twitter" width="30"
+            /></a>
+            <a href="https://x.com/Ace_Flores2004" target="_blank"
+              ><img src="img/twitter icon.png" alt="LinkedIn" width="30"
+            /></a>
+          </div>
+        </div>
+
+
+         <!-- Member 7 -->
+         <div class="member">
+          <img src="img/gieng.png" alt="" />
+          <h2>Gerald Ortibaño</h2>
+          <p class="role">Designer</p>
+          <hr />
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100063823436708" target="_blank"
+              ><img src="img/fbicon.png" alt="Facebook" width="30"
+            /></a>
+            <a href="https://www.instagram.com/j1eng/" target="_blank"
+              ><img src="img/instaicon.png" alt="Twitter" width="30"
+            /></a>
+            <a href="https://x.com/jieng110" target="_blank"
+              ><img src="img/twitter icon.png" alt="LinkedIn" width="30"
+            /></a>
+          </div>
+        </div>
+
+
+  
+   <!-- Member 5 -->
+   <div class="member">
+    <img src="img/r.jpg" alt="" />
+    <h2>Raniel Torregoza</h2>
+    <p class="role">Support</p>
+    <hr />
+    <div class="social-icons">
+      <a href="https://www.facebook.com/rainiel.torregoza.9" target="_blank"
+        ><img src="img/fbicon.png" alt="Facebook" width="30"
+      /></a>
+      <a href="https://www.instagram.com/rrainiel22?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"
+        ><img src="img/instaicon.png" alt="Twitter" width="30"
+      /></a>
+      
+    </div>
+  </div>
+
+       
+
+
+     
+
+    
+
+       
+   
+    </section>
+
+    <footer>
+      <div class="footer">
+       
+        <div class="footer-icon">
+          <img src="img/final logo2.png" alt="Footer Icon" />
+      </div>
+      
+      <div class="row">
+      <ul>
+      <li><a href="index.html.html">HOME</a></li>
+      <li><a href="allcarsinventory.html">VEHICLES</a></li>
+      <li><a href="allservices.html">SERVICES</a></li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="contactservices.html">CONTACT</a></li>
+      <li><a href="faqs.html">FAQS</a></li>
+      </ul>
+      </div>
+      
+
+
+      <div class="row">
+        <ul>
+            <li>
+               
+                    <img src="img/email-outline-removebg-preview.png" alt="Email Icon"> slidetech@gmail.com
+               
+            </li>
+            <li>
+              
+                    <img src="img/ooooooooooooooooooooooooooooooooooo-removebg-preview.png" alt="Clock Icon"> Mon-Fri, 9:00 AM - 6:00 PM
+             
+            </li>
+            <li>
+              
+                    <img src="img/telephone-removebg-preview.png" alt="Phone Icon"> 0912-587-0734
+             
+            </li>
+            <li>
+              
+                    <img src="img/navigation-removebg-preview.png" alt="Location Icon">  Karuhatan Daliva st. Valenzuela City
+              
+            </li>
+        </ul>
+    </div>
+    
+
+
+    <div class="row">
+      <ul>
+          <li>
+              <a href="https://www.facebook.com/people/Slide-Tech/100092159427541/?mibextid=ZbWKwL" class="facebook-icon"><img src="img/social.png" alt="Fscebook"></a>
+          </li>
+          <li>
+              <a href="https://www.instagram.com/slidetech40?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram-icon"><img src="img/inds.png" alt="Instagram"></a>
+          </li>
+      
+          <li>
+              <a href="https://x.com/SlideTech11" class="twitter-icon"><img src="img/twitter (3).png" alt="Twitter"></a>
+          </li>
+      </ul>
+  </div>
+  
+      
+      <div class="row">
+     Copyright © 2024 SlideTech - All rights reserved
+      </div>
+      </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      data-default-icon="Logo Icon"
+      data-badged-icon="Logo Icon"
+      rel="shortcut icon"
+      href=".//img/Document_files/LOGO ICON"
+    />
+    <title>Services</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+      }
+      .nav-bar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        position: relative;
+        background-color: black;
+        padding: 12px 20px;
+      }
+      .logo img {
+        width: 70px;
+
+        height: auto;
+      }
+      .menu {
+        display: flex;
+      }
+      .menu li {
+        padding-left: 30px;
+      }
+      .menu li a {
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        transition: 0.15s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
+      }
+      .menu li a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: white;
+        transition: 0.15s ease-in-out;
+      }
+      .menu li a:hover:after {
+        width: 100%;
+      }
+      .open-menu,
+      .close-menu {
+        position: absolute;
+        color: white;
+        cursor: pointer;
+        font-size: 1.5rem;
+        display: none;
+      }
+      .open-menu {
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+      }
+      .close-menu {
+        top: 20px;
+        right: 20px;
+      }
+      #check {
+        display: none;
+      }
+      @media (max-width: 610px) {
+        .menu {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 80%;
+          height: 100vh;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          z-index: 100;
+          background-color: black;
+          transition: all 0.2s ease-in-out;
+        }
+        .menu li {
+          margin-top: 40px;
+        }
+        .menu li a {
+          padding: 10px;
+        }
+        .open-menu,
+        .close-menu {
+          display: block;
+        }
+        #check:checked ~ .menu {
+          right: 0;
+        }
+      }
+
+      .services-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px 30px;
+        margin: 0 auto;
+      }
+
+      .services-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .services-title h2 {
+        font-size: 60px;
+        color: black;
+        text-align: center;
+        padding: 20px 0;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .service-card {
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        width: calc(25% - 20px);
+        height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .service-card h1 {
+        font-size: 1.2em;
+        margin-top: 0px;
+        margin-bottom: -2px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .service-icon {
+        display: block;
+        margin: 0 auto 0px auto;
+        width: 55px;
+        height: auto;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      .service-card hr {
+        border: none;
+        border-top: 2px solid #ccc;
+        width: 80%;
+        margin: 2px auto;
+      }
+
+      .service-card p {
+        font-size: 1em;
+        margin-bottom: 1px;
+        color: #555;
+        position: relative;
+        z-index: 2;
+      }
+
+      .contact-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 100px;
+        background-color: black;
+        padding: 20px;
+        flex-wrap: wrap;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .contact-row h1 {
+        margin: 0;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .contact-row .icon-img {
+        width: 25px;
+        height: auto;
+        margin-right: 15px;
+      }
+
+      .contact-row p {
+        margin: 0px 0px 0px 40px;
+        font-size: 19px;
+        color: #fff;
+      }
+
+      @media (max-width: 1024px) {
+        .service-card {
+          width: calc(33.333% - 20px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .service-card {
+          width: calc(50% - 20px);
+        }
+
+        .contact-info {
+          flex-direction: column;
+          gap: 40px;
+          padding: 15px;
+        }
+
+        .contact-row {
+          gap: 10px;
+          margin-bottom: 20px;
+        }
+
+        .contact-row p {
+          margin-left: 0;
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .service-card {
+          width: 100%;
+          height: auto;
+        }
+
+        .contact-info {
+          gap: 20px;
+          padding: 10px;
+        }
+
+        .contact-row h1 {
+          font-size: 18px;
+        }
+
+        .contact-row p {
+          font-size: 14px;
+        }
+
+        .contact-row .icon-img {
+          width: 20px;
+        }
+      }
+
+    
+  .footer{
+background:#000;
+padding:30px 0px 10px 0px;
+
+text-align:center;
+}
+
+.footer .footer-icon {
+    margin-bottom: 20px; 
+}
+
+.footer .footer-icon img {
+    width: 70px; 
+    height: auto;
+    margin: 0 auto; 
+}
+
+
+.footer .row{
+width:100%;
+margin:1% 0%;
+padding:0.6% 0%;
+color:white;
+font-size:0.9em;
+}
+
+
+
+.footer .row a{
+text-decoration:none;
+color:white;
+transition:0.5s;
+}
+
+
+
+.row ul li {
+    display: flex;
+    align-items: center; 
+    margin: 12px 0;
+}
+
+.row ul li img {
+    width: 25px; 
+    height: 25px;
+    margin-right: 10px; 
+    vertical-align: middle; 
+}
+
+
+.footer .row a:hover{
+color:red;
+}
+
+.footer .row ul{
+width:100%;
+}
+
+.footer .row ul li{
+display:inline-block;
+margin:0px 30px;
+}
+
+.footer .row a i{
+font-size:2em;
+margin:0% 1%;
+}
+
+
+
+
+.footer .facebook-icon img {
+    height: auto;
+    width: 50px;
+    padding: 5px;
+    border-radius: 50%; 
+    transition: 0.3s; 
+    
+}
+
+
+
+
+.footer .instagram-icon img {
+  height: auto;
+  width: 56px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+
+
+
+
+
+.footer .twitter-icon img {
+  height: auto;
+  width: 70px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+
+
+@media (max-width: 480px) {
+   
+    .footer .facebook-icon img {
+        width: 40px; 
+        padding: 4px;
+        margin-left: -13px;
+       
+    }
+
+    
+    .footer .instagram-icon img {
+        width: 45px;
+        padding: 4px; 
+        margin-left: -13px;
+    }
+
+ 
+    .footer .twitter-icon img {
+        width: 50px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+}
+
+
+@media (max-width: 720px) {
+    
+    .footer .facebook-icon img {
+        width: 40px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+
+    .footer .instagram-icon img {
+        width: 45px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+
+
+    .footer .twitter-icon img {
+        width: 50px; 
+        padding: 4px; 
+        margin-left: -13px;
+    }
+}
+
+@media (min-width: 721px) {
+  .footer {
+    text-align: center;
+    padding: 2%;
+  }
+
+  .footer .row ul li {
+    display: inline-block;
+    margin: 10px 15px  ;
+    text-align: center;
+  }
+
+  .footer .row a i {
+    margin: 0 5%;
+  }
+}
+
+
+@media (max-width:720px){
+.footer{
+text-align:left;
+padding:5%;
+}
+.footer .row ul li{
+display:block;
+margin:10px 0px;
+text-align:left;
+}
+.footer .row a i{
+margin:0% 3%;
+}
+}
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul class="nav-bar">
+          <li class="logo">
+            <a href="index.html.html"><img src="img/final logo2.png" /></a>
+          </li>
+
+          <input type="checkbox" id="check" />
+          <span class="menu">
+            <li><a href="index.html.html">Home</a></li>
+            <li><a href="allcarsinventory.html">VEHICLES</a></li>
+            <li><a href="allservices.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contactservices.html">Contact</a></li>
+            <li><a href="faqs.html">FAQS</a></li>
+            <label for="check" class="close-menu"
+              ><i class="fas fa-times"></i
+            ></label>
+          </span>
+          <label for="check" class="open-menu"
+            ><i class="fas fa-bars"></i
+          ></label>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="services-container" id="serbisyo">
+      <div class="services-title">
+        <h2>Our Services</h2>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src=".//img/battery-removebg-preview.png"
+          alt="Battery"
+        />
+        <h1>Batteries</h1>
+        <hr />
+        <p>Reliable battery services to keep your vehicle running smoothly</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/oil-removebg-preview.png"
+          alt="oil"
+        />
+        <h1>Oil Change</h1>
+        <hr />
+        <p>Premium oil changes for engine longevity and peak performance</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/schedule-removebg-preview.png"
+          alt="Scheduled maintenance"
+        />
+        <h1>Scheduled Maintenance</h1>
+        <hr />
+        <p>Regular check-ups to ensure your vehicle is always road ready</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/tuning-removebg-preview.png"
+          alt="Tune up and engine services"
+        />
+        <h1>Tune-up & Engine Services</h1>
+        <hr />
+        <p>
+          Enhance your vehicle's performance with expert Tune-ups and Engine
+          Services
+        </p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/wiper.png"
+          alt="Tune up and engine services"
+        />
+        <h1>Wiper Blade Replacement</h1>
+        <hr />
+        <p>
+          Clear Vision on every journey with quality wiper blade replacements
+        </p>
+      </div>
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/air-conditioner.png"
+          alt="Tune up and engine services"
+        />
+        <h1>Ac Services</h1>
+        <hr />
+        <p>Stay Comfortable with our high-quality air conditioning service</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/car-radiator.png"
+          alt="Tune up and engine services"
+        />
+        <h1>Radiator Service</h1>
+        <hr />
+        <p>Efficient radiator service to keep your engine cool and safe</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/warranty-card.png"
+          alt="Tune up and engine services"
+        />
+        <h1>Warranty Service</h1>
+        <hr />
+        <p>Enjoy peace of mind with your comprehensive warranty service</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/inspection.png"
+          alt="Tune up and engine services"
+        />
+        <h1>Free vehicle inspections</h1>
+        <hr />
+        <p>Comprehensive checks to identify any issues early on</p>
+      </div>
+
+      <div class="service-card">
+        <img
+          class="service-icon"
+          src="img/transmission.png"
+          alt="Tune up and engine services"
+        />
+        <h1>Transmission</h1>
+        <hr />
+        <p>Smooth and Responsive transmission service for all car models</p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer">
+       
+        <div class="footer-icon">
+          <img src="img/final logo2.png" alt="Footer Icon" />
+      </div>
+      
+      <div class="row">
+      <ul>
+      <li><a href="index.html.html">HOME</a></li>
+      <li><a href="allcarsinventory.html">VEHICLES</a></li>
+      <li><a href="allservices.html">SERVICES</a></li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="contactservices.html">CONTACT</a></li>
+      <li><a href="faqs.html">FAQS</a></li>
+      </ul>
+      </div>
+      
+
+
+      <div class="row">
+        <ul>
+            <li>
+               
+                    <img src="img/email-outline-removebg-preview.png" alt="Email Icon"> slidetech@gmail.com
+               
+            </li>
+            <li>
+              
+                    <img src="img/ooooooooooooooooooooooooooooooooooo-removebg-preview.png" alt="Clock Icon"> Mon-Fri, 9:00 AM - 6:00 PM
+             
+            </li>
+            <li>
+              
+                    <img src="img/telephone-removebg-preview.png" alt="Phone Icon"> 0912-587-0734
+             
+            </li>
+            <li>
+              
+                    <img src="img/navigation-removebg-preview.png" alt="Location Icon">  Karuhatan Daliva st. Valenzuela City
+              
+            </li>
+        </ul>
+    </div>
+    
+
+
+    <div class="row">
+      <ul>
+          <li>
+              <a href="https://www.facebook.com/people/Slide-Tech/100092159427541/?mibextid=ZbWKwL" class="facebook-icon"><img src="img/social.png" alt="Fscebook"></a>
+          </li>
+          <li>
+              <a href="https://www.instagram.com/slidetech40?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram-icon"><img src="img/inds.png" alt="Instagram"></a>
+          </li>
+      
+          <li>
+              <a href="https://x.com/SlideTech11" class="twitter-icon"><img src="img/twitter (3).png" alt="Twitter"></a>
+          </li>
+      </ul>
+  </div>
+  
+      
+    <div class="row">
+     Copyright © 2024 SlideTech - All rights reserved
+      </div>
+      </div>
+      </footer>
+    </div>
+  
+
+
+  </body>
+</html>
